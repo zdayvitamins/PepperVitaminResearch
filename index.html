@@ -58,7 +58,7 @@ a{color:var(--p)}
 <div class="actions">
 <a class="btn primary" href="pricing.html">View Private Pricing</a>
 <a class="btn secondary" href="catalog.html">Explore the Research Guide</a>
-<a class="btn primary" href="/news/">Research &amp; News</a>
+<a class="btn primary" href="{{ '/news/' | relative_url }}">Research &amp; News</a>
 </div>
 <div class="grid">
 <div class="card"><strong>Quality</strong><span>Quality-focused research products and responsive support.</span></div>
@@ -81,7 +81,7 @@ a{color:var(--p)}
 </a>
 {% endfor %}
 </div>
-<a class="news-all" href="/news/">View All Research →</a>
+<a class="news-all" href="{{ '/news/' | relative_url }}">View All Research →</a>
 </section>
 <div class="note">Products and information presented here are intended solely for laboratory and research purposes. They are not intended for human consumption, diagnosis, treatment, prevention, or cure of disease.</div>
 <section class="note" style="text-align:center">
