@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,7 +30,21 @@ h1{font-size:clamp(2rem,6vw,3.5rem);color:var(--p);margin:20px 0 6px}
 footer{text-align:center;border-top:1px solid #e2dbea;padding:24px 0 36px;font-size:.9rem}
 footer b{color:var(--p)}
 a{color:var(--p)}
-@media(max-width:700px){.actions,.grid{grid-template-columns:1fr}}
+
+.news-section{margin:10px 0 34px}
+.news-head{text-align:center;margin-bottom:18px}
+.news-head h2{color:var(--p);margin:0 0 6px;font-size:1.65rem}
+.news-head p{color:var(--muted);margin:0}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.news-card{display:flex;flex-direction:column;background:#fff;border-radius:16px;padding:20px;text-decoration:none;color:var(--ink);box-shadow:0 12px 30px rgba(53,16,111,.08);border-top:4px solid var(--g)}
+.news-card:hover{transform:translateY(-2px)}
+.news-meta{font-size:.78rem;color:var(--muted);font-weight:700}
+.news-card h3{color:var(--p);margin:8px 0;font-size:1.08rem;line-height:1.3}
+.news-card p{color:var(--muted);margin:0 0 12px;font-size:.92rem}
+.news-more{margin-top:auto;color:var(--p2);font-weight:900;font-size:.88rem}
+.news-all{display:block;width:max-content;margin:18px auto 0;text-decoration:none;font-weight:900;color:var(--p);border-bottom:2px solid var(--g)}
+
+@media(max-width:700px){.actions,.grid,.news-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body><div class="wrap">
@@ -41,12 +58,31 @@ a{color:var(--p)}
 <div class="actions">
 <a class="btn primary" href="pricing.html">View Private Pricing</a>
 <a class="btn secondary" href="catalog.html">Explore the Research Guide</a>
+<a class="btn primary" href="/news/">Research &amp; News</a>
 </div>
 <div class="grid">
 <div class="card"><strong>Quality</strong><span>Quality-focused research products and responsive support.</span></div>
 <div class="card"><strong>Value</strong><span>Affordable research products without sacrificing quality.</span></div>
 <div class="card"><strong>Service</strong><span>Questions are welcome. Customer satisfaction comes first.</span></div>
 </div>
+<section class="news-section" aria-labelledby="latestResearchTitle">
+<div class="news-head">
+<h2 id="latestResearchTitle">Latest Research &amp; News</h2>
+<p>Research explained clearly, with sources and study context.</p>
+</div>
+<div class="news-grid">
+{% assign latest_posts = site.posts | slice: 0, 3 %}
+{% for post in latest_posts %}
+<a class="news-card" href="{{ post.url | relative_url }}">
+<div class="news-meta">{{ post.category | default: "Research News" }} • {{ post.date | date: "%b %-d, %Y" }}</div>
+<h3>{{ post.title }}</h3>
+<p>{{ post.excerpt_text | default: post.excerpt | strip_html | truncate: 145 }}</p>
+<span class="news-more">Read Research →</span>
+</a>
+{% endfor %}
+</div>
+<a class="news-all" href="/news/">View All Research →</a>
+</section>
 <div class="note">Products and information presented here are intended solely for laboratory and research purposes. They are not intended for human consumption, diagnosis, treatment, prevention, or cure of disease.</div>
 <section class="note" style="text-align:center">
 <h2 style="color:#35106f;margin:0 0 16px">Questions?</h2>
