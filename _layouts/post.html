@@ -169,10 +169,10 @@
 
 <header>
   <div class="nav">
-    <a href="/">
-      <img src="/zday_logo.png" alt="Z Day Research" class="logo">
+    <a href="{{ '/' | relative_url }}">
+      <img src="{{ '/zday_logo.png' | relative_url }}" alt="Z Day Research" class="logo">
     </a>
-    <a href="/news/" class="back">← Research & News</a>
+    <a href="{{ '/news/' | relative_url }}" class="back">← Research & News</a>
   </div>
 </header>
 
@@ -219,7 +219,7 @@
       </li>
     {% endfor %}
   </ul>
-  <p><a href="/news/">View All Research & News →</a></p>
+  <p><a href="{{ '/news/' | relative_url }}">View All Research & News →</a></p>
 </section>
   <div class="disclaimer">
     <strong>For Research & Educational Purposes Only</strong><br>
